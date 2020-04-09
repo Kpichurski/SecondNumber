@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     self.numbersArray.append(document.data().first!.value as? String ?? "")
                     
-                   
+                   //
                 }
             }
         }
