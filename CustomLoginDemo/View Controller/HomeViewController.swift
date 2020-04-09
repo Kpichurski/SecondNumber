@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
         Utilities.styleFilledButtonLogout(logOutButton)
         Utilities.styleTextField(numerTextField)
         Utilities.styleFilledButton(generateButton)
+        numerTextField.isUserInteractionEnabled = false
         let db = Firestore.firestore()
         db.collection("numbers").getDocuments() { (querySnapshot, err) in
             if let err = err {
