@@ -235,26 +235,59 @@
             </objects>
             <point key="canvasLocation" x="3204" y="609"/>
         </scene>
-        <!--Item 1-->
+        <!--Add number-->
         <scene sceneID="Zgp-Xs-WY9">
             <objects>
-                <viewController id="CY9-gq-pKm" sceneMemberID="viewController">
+                <viewController id="CY9-gq-pKm" userLabel="Add number" customClass="AddNumberViewController" customModule="CustomLoginDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TXD-LD-mZb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-g0-Kxk">
-                                <rect key="frame" x="186" y="405" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-7L-NQP">
+                                <rect key="frame" x="127.5" y="351.5" width="159" height="193"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-g0-Kxk">
+                                        <rect key="frame" x="0.0" y="0.0" width="159" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TMU-0G-4JD">
+                                        <rect key="frame" x="0.0" y="56" width="159" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPQ-xE-wzp">
+                                        <rect key="frame" x="0.0" y="110" width="159" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addButtonTapped:" destination="CY9-gq-pKm" eventType="touchUpInside" id="7BF-fR-gvD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0E-a1-BDV">
+                                        <rect key="frame" x="0.0" y="170" width="159" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yWo-7L-NQP" firstAttribute="centerX" secondItem="TXD-LD-mZb" secondAttribute="centerX" id="1Lr-SJ-czE"/>
+                            <constraint firstItem="yWo-7L-NQP" firstAttribute="centerY" secondItem="TXD-LD-mZb" secondAttribute="centerY" id="Ebl-th-hKt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Kxl-7k-66I"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="eVx-wz-dbK"/>
+                    <connections>
+                        <outlet property="addButton" destination="uPQ-xE-wzp" id="fAo-fV-avQ"/>
+                        <outlet property="addNumberLabel" destination="dbk-g0-Kxk" id="LcB-VK-I6f"/>
+                        <outlet property="errorTextField" destination="d0E-a1-BDV" id="Kg1-Aq-Fm3"/>
+                        <outlet property="newNumberTextField" destination="TMU-0G-4JD" id="oq2-Rk-kcT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vvE-Nd-lZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
