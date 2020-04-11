@@ -16,12 +16,16 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     var numbersArrayId = [String]()
     var numbersArrayValue = [String]()
     var db =  Firestore.firestore()
+    var numberToEditId:String?
+    var numberToEditValue:String?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func load(){
+        self.numbersArrayId.removeAll()
+        self.numbersArrayValue.removeAll()
          db.collection("numbers").getDocuments() { (querySnapshot, err) in
              if let err = err {
                  print("Error getting documents: \(err)")
@@ -41,31 +45,54 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
         return self.numbersArrayValue.count
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        numbersArrayId.removeAll()
-        numbersArrayValue.removeAll()
-        load()
-        self.tableView.reloadData()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditNumber" {
+            let editNumberPopUp = segue.destination as! EditNumberViewController
+            editNumberPopUp.numberToEditId = self.numberToEditId
+            editNumberPopUp.numberToEditValue = self.numberToEditValue
+            editNumberPopUp.doneSaving = {[weak self] in
+                self?.load()
+            }
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        load()
+    }
+    
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = numbersArrayValue[indexPath.row]
         return cell
     }
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = UIContextualAction(style: .destructive, title: "Edit"){(action, view,
+            actionPerformed: (Bool) -> () ) in
+            self.numberToEditId = self.numbersArrayId[indexPath.row]
+            self.numberToEditValue = self.numbersArrayValue[indexPath.row]
+            self.performSegue(withIdentifier: "toEditNumber", sender: nil)
+            actionPerformed(true)
+        }
+         edit.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        return UISwipeActionsConfiguration(actions: [edit])
+    }
     
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            numbersArrayValue.remove(at: indexPath.row)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "Delete"){(action, view, nil ) in
+            self.numbersArrayValue.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .right)
-            db.collection("numbers").document(numbersArrayId[indexPath.row]).delete { (err) in
+            self.db.collection("numbers").document(self.numbersArrayId[indexPath.row]).delete { (err) in
                 if let err = err {
                     print("Error deleting document: \(err)")
                 } else {
                     print("Document successfully deleted")
                 }
             }
-   
         }
+            delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            return UISwipeActionsConfiguration(actions: [delete])
     }
 
 }
