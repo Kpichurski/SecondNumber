@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class AddNumberViewController: UIViewController {
+class AddNumberViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var newNumberTextField: UITextField!
@@ -31,7 +31,13 @@ class AddNumberViewController: UIViewController {
         super.viewDidLoad()
         Utilities.styleTextField(newNumberTextField)
         Utilities.styleFilledButton(addButton)
+        newNumberTextField.keyboardType = UIKeyboardType.numberPad
+        self.newNumberTextField.delegate = self
         // Do any additional setup after loading the view.
+    }
+    //hide keyboard when user touch outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
 
@@ -58,7 +64,6 @@ class AddNumberViewController: UIViewController {
 
             }
         }
-
     }
     
     func displayAlert(_ alertText:String?){

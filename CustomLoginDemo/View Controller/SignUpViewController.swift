@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBOutlet weak var errorLabel: UILabel!
@@ -23,7 +23,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordTextField.delegate = self
+        EmailTextField.delegate = self
+        lastNameTextField.delegate = self
+        firstNameTextField.delegate = self
         // Do any additional setup after loading the view.
         setUpElements()
     
@@ -31,6 +34,12 @@ class SignUpViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
                navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+    
     func setUpElements(){
         errorLabel.alpha = 0
         Utilities.styleTextField(firstNameTextField)
@@ -39,7 +48,10 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signUpButton)
     }
-    
+    //hide keyboard when user touch outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
