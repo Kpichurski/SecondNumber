@@ -21,6 +21,7 @@
 		908B1FB6243D357F000E6356 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 908B1FB5243D357F000E6356 /* GoogleService-Info.plist */; };
 		90E281F5243D432100CA2E8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E281F4243D432100CA2E8E /* Constants.swift */; };
 		90E281FA243FCC3000CA2E8E /* AddNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E281F9243FCC3000CA2E8E /* AddNumberViewController.swift */; };
+		943AED272442603F008F105F /* EditNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AED262442603E008F105F /* EditNumberViewController.swift */; };
 		949A4EA8243FD48400D17C9A /* ListOfNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		90E281F4243D432100CA2E8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90E281F9243FCC3000CA2E8E /* AddNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNumberViewController.swift; sourceTree = "<group>"; };
 		90E283D02442068200CA2E8E /* CustomLoginDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomLoginDemo.entitlements; sourceTree = "<group>"; };
+		943AED262442603E008F105F /* EditNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNumberViewController.swift; sourceTree = "<group>"; };
 		949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfNumbersViewController.swift; sourceTree = "<group>"; };
 		D2D7A55AFC8952BAFE0A998B /* Pods-CustomLoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomLoginDemo.release.xcconfig"; path = "Target Support Files/Pods-CustomLoginDemo/Pods-CustomLoginDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,8 +121,9 @@
 				9016370F243D23BF005578E9 /* LoginViewController.swift */,
 				9016370D243D2398005578E9 /* SignUpViewController.swift */,
 				901636FD243D231F005578E9 /* ViewController.swift */,
-				949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */,
 				90E281F9243FCC3000CA2E8E /* AddNumberViewController.swift */,
+				949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */,
+				943AED262442603E008F105F /* EditNumberViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				901636FC243D231F005578E9 /* SceneDelegate.swift in Sources */,
 				90163712243D23D8005578E9 /* HomeViewController.swift in Sources */,
 				90E281F5243D432100CA2E8E /* Constants.swift in Sources */,
+				943AED272442603F008F105F /* EditNumberViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
