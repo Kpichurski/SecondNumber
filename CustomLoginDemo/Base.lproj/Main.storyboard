@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="1645" y="633"/>
         </scene>
-        <!--Item-->
+        <!--Choose Number-->
         <scene sceneID="Mw5-Jn-FXT">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="N0s-OZ-ldl" customClass="HomeViewController" customModule="CustomLoginDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P00-m0-MZc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Uke-G5-eAw"/>
+                    <tabBarItem key="tabBarItem" title="Choose Number" id="Uke-G5-eAw"/>
                     <connections>
                         <outlet property="editModeTextField" destination="cTY-Ea-N2v" id="liQ-6w-7L7"/>
                         <outlet property="generateButton" destination="1k9-vj-3Le" id="StO-gI-nE8"/>
@@ -210,7 +210,7 @@
             </objects>
             <point key="canvasLocation" x="3874" y="609"/>
         </scene>
-        <!--Item 2-->
+        <!--List Of Numbers-->
         <scene sceneID="oqw-SS-BMJ">
             <objects>
                 <viewController id="AKa-aL-sf2" customClass="ListOfNumbersViewController" customModule="CustomLoginDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,7 +246,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hlm-Xp-3Ej"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="HJO-oV-14H"/>
+                    <tabBarItem key="tabBarItem" title="List Of Numbers" id="HJO-oV-14H"/>
                     <connections>
                         <outlet property="tableView" destination="IIJ-mN-Gv7" id="yRL-1o-Sva"/>
                     </connections>
@@ -301,7 +301,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kxl-7k-66I"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="eVx-wz-dbK"/>
+                    <tabBarItem key="tabBarItem" title="Add Number" id="eVx-wz-dbK"/>
                     <connections>
                         <outlet property="addButton" destination="uPQ-xE-wzp" id="fAo-fV-avQ"/>
                         <outlet property="addNumberLabel" destination="dbk-g0-Kxk" id="LcB-VK-I6f"/>
