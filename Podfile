@@ -11,5 +11,6 @@ target 'CustomLoginDemo' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Functions'
+	pod 'Firebase/Storage'
 	pod 'MHLoadingButton'
 end

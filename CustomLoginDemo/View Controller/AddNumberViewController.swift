@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 class AddNumberViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var newNumberTextField: UITextField!
     @IBOutlet weak var addNumberLabel: UILabel!
 
+    @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var errorTextField: UILabel!
     @IBAction func showAlertButtonTapped(_ sender: UIButton) {
 
@@ -26,13 +28,38 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        var refDoc = db.collection("config").document(currentUser?.uid ?? "")
+        
+        refDoc.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var referenceImage = document.data()?.first!.value as? String ?? ""
+                var refImage = Storage.storage().reference().child(currentUser?.uid ?? "")
+                
+                refImage.getData(maxSize: 1 * 1024 * 1024){ (data, error) in
+                    if let error = error {
+                        
+                    }
+                    else {
+                        self.backgroundView.image = UIImage(data: data!)
+                    }
+                }
+                
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.styleTextField(newNumberTextField)
         Utilities.styleFilledButton(addButton)
         newNumberTextField.keyboardType = UIKeyboardType.numberPad
+
         self.newNumberTextField.delegate = self
+        
+        //self.backgroundView.image =
         // Do any additional setup after loading the view.
     }
     //hide keyboard when user touch outside

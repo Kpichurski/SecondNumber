@@ -263,6 +263,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvS-f0-bBK">
+                                <rect key="frame" x="20" y="44" width="374" height="769"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-7L-NQP">
                                 <rect key="frame" x="127.5" y="351.5" width="159" height="193"/>
                                 <subviews>
@@ -297,7 +300,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="yWo-7L-NQP" firstAttribute="centerX" secondItem="TXD-LD-mZb" secondAttribute="centerX" id="1Lr-SJ-czE"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lvS-f0-bBK" secondAttribute="bottom" id="7g2-of-vIF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lvS-f0-bBK" secondAttribute="trailing" id="8d1-xl-2ST"/>
+                            <constraint firstItem="lvS-f0-bBK" firstAttribute="top" secondItem="TXD-LD-mZb" secondAttribute="topMargin" id="9Av-vI-UQc"/>
                             <constraint firstItem="yWo-7L-NQP" firstAttribute="centerY" secondItem="TXD-LD-mZb" secondAttribute="centerY" id="Ebl-th-hKt"/>
+                            <constraint firstItem="lvS-f0-bBK" firstAttribute="leading" secondItem="TXD-LD-mZb" secondAttribute="leadingMargin" id="Fcw-0x-6db"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kxl-7k-66I"/>
                     </view>
@@ -305,6 +312,7 @@
                     <connections>
                         <outlet property="addButton" destination="uPQ-xE-wzp" id="fAo-fV-avQ"/>
                         <outlet property="addNumberLabel" destination="dbk-g0-Kxk" id="LcB-VK-I6f"/>
+                        <outlet property="backgroundView" destination="lvS-f0-bBK" id="h8m-mp-H0Z"/>
                         <outlet property="errorTextField" destination="d0E-a1-BDV" id="Kg1-Aq-Fm3"/>
                         <outlet property="newNumberTextField" destination="TMU-0G-4JD" id="oq2-Rk-kcT"/>
                     </connections>
@@ -313,30 +321,44 @@
             </objects>
             <point key="canvasLocation" x="2516" y="609"/>
         </scene>
-        <!--Item-->
+        <!--Image-->
         <scene sceneID="xYS-81-4oK">
             <objects>
-                <viewController id="uzy-Gl-dLy" sceneMemberID="viewController">
+                <viewController id="uzy-Gl-dLy" userLabel="Image" customClass="ImageController" customModule="CustomLoginDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0tl-aa-Uf1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-PR-PZd">
-                                <rect key="frame" x="186" y="438" width="57" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCM-8p-tKe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="339"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-9S-Qgg">
+                                <rect key="frame" x="52" y="433" width="311" height="30"/>
+                                <state key="normal" title="Import image"/>
+                                <connections>
+                                    <action selector="importButton:" destination="uzy-Gl-dLy" eventType="touchUpInside" id="2et-78-fYf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ypf-9S-Qgg" firstAttribute="top" secondItem="OCM-8p-tKe" secondAttribute="bottom" constant="50" id="7fT-Ug-vj0"/>
+                            <constraint firstItem="OCM-8p-tKe" firstAttribute="top" secondItem="mLd-vb-NTh" secondAttribute="top" id="9he-h9-cEQ"/>
+                            <constraint firstItem="OCM-8p-tKe" firstAttribute="leading" secondItem="mLd-vb-NTh" secondAttribute="leading" id="L0p-gS-abX"/>
+                            <constraint firstItem="mLd-vb-NTh" firstAttribute="trailing" secondItem="OCM-8p-tKe" secondAttribute="trailing" id="LK3-aV-cmJ"/>
+                            <constraint firstItem="ypf-9S-Qgg" firstAttribute="centerY" secondItem="0tl-aa-Uf1" secondAttribute="centerY" id="fMG-7K-nAi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mLd-vb-NTh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="FWb-1v-C4u"/>
+                    <connections>
+                        <outlet property="imageView" destination="OCM-8p-tKe" id="jEU-Np-2j2"/>
+                        <outlet property="importImage" destination="ypf-9S-Qgg" id="MpW-hH-FcV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZr-xx-XWI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4571" y="609"/>
+            <point key="canvasLocation" x="4569.5652173913049" y="608.70535714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bER-XB-CKh">
