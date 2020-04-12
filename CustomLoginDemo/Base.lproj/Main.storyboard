@@ -315,8 +315,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvS-f0-bBK">
-                                <rect key="frame" x="20" y="44" width="374" height="769"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvS-f0-bBK">
+                                <rect key="frame" x="20" y="44" width="87" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-7L-NQP">
                                 <rect key="frame" x="127.5" y="351.5" width="159" height="193"/>
@@ -352,11 +353,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="yWo-7L-NQP" firstAttribute="centerX" secondItem="TXD-LD-mZb" secondAttribute="centerX" id="1Lr-SJ-czE"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="lvS-f0-bBK" secondAttribute="bottom" id="7g2-of-vIF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lvS-f0-bBK" secondAttribute="trailing" id="8d1-xl-2ST"/>
-                            <constraint firstItem="lvS-f0-bBK" firstAttribute="top" secondItem="TXD-LD-mZb" secondAttribute="topMargin" id="9Av-vI-UQc"/>
                             <constraint firstItem="yWo-7L-NQP" firstAttribute="centerY" secondItem="TXD-LD-mZb" secondAttribute="centerY" id="Ebl-th-hKt"/>
-                            <constraint firstItem="lvS-f0-bBK" firstAttribute="leading" secondItem="TXD-LD-mZb" secondAttribute="leadingMargin" id="Fcw-0x-6db"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kxl-7k-66I"/>
                     </view>
@@ -371,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vvE-Nd-lZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="609"/>
+            <point key="canvasLocation" x="2515.9420289855075" y="608.70535714285711"/>
         </scene>
         <!--Image-->
         <scene sceneID="xYS-81-4oK">

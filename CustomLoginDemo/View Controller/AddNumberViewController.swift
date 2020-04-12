@@ -56,8 +56,16 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleTextField(newNumberTextField)
         Utilities.styleFilledButton(addButton)
         newNumberTextField.keyboardType = UIKeyboardType.numberPad
+        backgroundView.layer.borderWidth = 1
+        backgroundView.layer.masksToBounds = false
+        backgroundView.layer.borderColor = UIColor.black.cgColor
 
+        
+        self.backgroundView.layer.cornerRadius = self.backgroundView.frame.size.width / 2
+        backgroundView.clipsToBounds = true
         self.newNumberTextField.delegate = self
+
+        
         
         //self.backgroundView.image =
         // Do any additional setup after loading the view.
