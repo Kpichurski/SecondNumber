@@ -21,16 +21,20 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
     }
     
     func load(){
-        self.numbersArrayId.removeAll()
-        self.numbersArrayValue.removeAll()
-         db.collection("numbers").getDocuments() { (querySnapshot, err) in
+        
+        db.collection("numbers")
+            .whereField("IsActive", isEqualTo: true)
+            .whereField("IsOccupied", isEqualTo: false)
+            .getDocuments() { (querySnapshot, err) in
              if let err = err {
                  print("Error getting documents: \(err)")
              } else {
-                 
+                self.numbersArrayId.removeAll()
+                self.numbersArrayValue.removeAll()
                  for document in querySnapshot!.documents {
                     self.numbersArrayValue.append(document.data().first!.value as? String ?? "")
                     self.numbersArrayId.append(document.documentID)

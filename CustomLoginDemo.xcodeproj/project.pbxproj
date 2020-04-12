@@ -24,6 +24,7 @@
 		90E283D224424E1A00CA2E8E /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E283D124424E1A00CA2E8E /* ImageController.swift */; };
 		943AED272442603F008F105F /* EditNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AED262442603E008F105F /* EditNumberViewController.swift */; };
 		949A4EA8243FD48400D17C9A /* ListOfNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */; };
+		94F6AA0A24434ECE0025A287 /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F6AA0924434ECE0025A287 /* NumberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		90E283D124424E1A00CA2E8E /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		943AED262442603E008F105F /* EditNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNumberViewController.swift; sourceTree = "<group>"; };
 		949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfNumbersViewController.swift; sourceTree = "<group>"; };
+		94F6AA0924434ECE0025A287 /* NumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
 		D2D7A55AFC8952BAFE0A998B /* Pods-CustomLoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomLoginDemo.release.xcconfig"; path = "Target Support Files/Pods-CustomLoginDemo/Pods-CustomLoginDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				90E283D02442068200CA2E8E /* CustomLoginDemo.entitlements */,
+				943AED2824434E10008F105F /* Models */,
 				90E281F6243E769000CA2E8E /* Media */,
 				908B1FB4243D2F88000E6356 /* Helpers */,
 				90163713243D23E4005578E9 /* View Controller */,
@@ -145,6 +148,14 @@
 			children = (
 			);
 			path = Media;
+			sourceTree = "<group>";
+		};
+		943AED2824434E10008F105F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				94F6AA0924434ECE0025A287 /* NumberModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 				90163712243D23D8005578E9 /* HomeViewController.swift in Sources */,
 				90E281F5243D432100CA2E8E /* Constants.swift in Sources */,
 				943AED272442603F008F105F /* EditNumberViewController.swift in Sources */,
+				94F6AA0A24434ECE0025A287 /* NumberModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

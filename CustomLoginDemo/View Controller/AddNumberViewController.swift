@@ -90,7 +90,9 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
         let db = Firestore.firestore()
 
         db.collection("numbers").addDocument(data: [
-            "number": newNumberTextField.text ?? "nil"
+            "Number": newNumberTextField.text ?? "nil",
+            "IsActive": true,
+            "IsOccupied": false
         ]) { err in
             if err != nil {
                 self.displayAlert("Error adding number")
