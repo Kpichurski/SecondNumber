@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
-    
+    let db = Firestore.firestore()
     
     
     override func viewDidLoad() {
@@ -96,9 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.showError("Error creating user")
                 }
                 else {
-                    let db = Firestore.firestore()
-                    
-                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                    self.db.collection("users").addDocument(data: ["firstname": firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
                         if error != nil {
                             self.showError("Error saving user data")
                         }

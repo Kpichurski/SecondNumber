@@ -166,20 +166,6 @@
                                     <constraint firstItem="1k9-vj-3Le" firstAttribute="height" secondItem="eDf-sj-IhA" secondAttribute="height" id="krh-ua-STX"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTY-Ea-N2v">
-                                <rect key="frame" x="20" y="53" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy4-Ih-CNd">
-                                <rect key="frame" x="106" y="48" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="switchTapped:" destination="N0s-OZ-ldl" eventType="valueChanged" id="AKd-Id-RZf"/>
-                                </connections>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOi-b1-2Bk">
                                 <rect key="frame" x="308" y="48" width="52" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -199,7 +185,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Choose Number" id="Uke-G5-eAw"/>
                     <connections>
-                        <outlet property="editModeTextField" destination="cTY-Ea-N2v" id="liQ-6w-7L7"/>
                         <outlet property="generateButton" destination="1k9-vj-3Le" id="StO-gI-nE8"/>
                         <outlet property="logOutButton" destination="eOi-b1-2Bk" id="fMt-B3-5Em"/>
                         <outlet property="numerTextField" destination="z6W-Oa-FfM" id="nAO-iH-FvU"/>
@@ -379,11 +364,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCM-8p-tKe">
-                                <rect key="frame" x="0.0" y="44" width="414" height="339"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="337"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-9S-Qgg">
-                                <rect key="frame" x="52" y="433" width="311" height="30"/>
-                                <state key="normal" title="Import image"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-9S-Qgg">
+                                <rect key="frame" x="147" y="423" width="120" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kAs-ZR-Ub6"/>
+                                    <constraint firstAttribute="width" constant="120" id="s7D-Dn-hDF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <state key="normal" title="Import"/>
+                                <state key="highlighted" title="Import"/>
                                 <connections>
                                     <action selector="importButton:" destination="uzy-Gl-dLy" eventType="touchUpInside" id="2et-78-fYf"/>
                                 </connections>
@@ -391,11 +382,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ypf-9S-Qgg" firstAttribute="top" secondItem="OCM-8p-tKe" secondAttribute="bottom" constant="50" id="7fT-Ug-vj0"/>
                             <constraint firstItem="OCM-8p-tKe" firstAttribute="top" secondItem="mLd-vb-NTh" secondAttribute="top" id="9he-h9-cEQ"/>
+                            <constraint firstItem="mLd-vb-NTh" firstAttribute="bottom" secondItem="OCM-8p-tKe" secondAttribute="bottom" constant="432" id="GJf-fi-aks"/>
+                            <constraint firstItem="ypf-9S-Qgg" firstAttribute="centerY" secondItem="0tl-aa-Uf1" secondAttribute="centerY" id="J5c-IG-sv0"/>
                             <constraint firstItem="OCM-8p-tKe" firstAttribute="leading" secondItem="mLd-vb-NTh" secondAttribute="leading" id="L0p-gS-abX"/>
                             <constraint firstItem="mLd-vb-NTh" firstAttribute="trailing" secondItem="OCM-8p-tKe" secondAttribute="trailing" id="LK3-aV-cmJ"/>
                             <constraint firstItem="ypf-9S-Qgg" firstAttribute="centerY" secondItem="0tl-aa-Uf1" secondAttribute="centerY" id="fMG-7K-nAi"/>
+                            <constraint firstItem="ypf-9S-Qgg" firstAttribute="centerX" secondItem="0tl-aa-Uf1" secondAttribute="centerX" id="tMy-Xv-VNi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mLd-vb-NTh"/>
                     </view>

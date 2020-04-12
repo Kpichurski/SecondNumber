@@ -18,13 +18,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var generateButton: UIButton!
     @IBOutlet weak var editModeTextField: UILabel!
     var numbersArray:[String] = []
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.styleFilledButtonLogout(logOutButton)
         Utilities.styleTextField(numerTextField)
         Utilities.styleFilledButton(generateButton)
         numerTextField.isUserInteractionEnabled = false
-        let db = Firestore.firestore()
+
         db.collection("numbers").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

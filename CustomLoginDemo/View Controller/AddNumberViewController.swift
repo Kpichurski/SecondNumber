@@ -17,6 +17,10 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var errorTextField: UILabel!
+    
+    let currentUser = Auth.auth().currentUser
+    let db = Firestore.firestore()
+    let refStorage = Storage.storage().reference()
     @IBAction func showAlertButtonTapped(_ sender: UIButton) {
 
         // create the alert
@@ -28,27 +32,17 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        let currentUser = Auth.auth().currentUser
-        let db = Firestore.firestore()
-        var refDoc = db.collection("config").document(currentUser?.uid ?? "")
-        
-        refDoc.getDocument { (document, error) in
-            if let document = document, document.exists {
-                var referenceImage = document.data()?.first!.value as? String ?? ""
-                var refImage = Storage.storage().reference().child(currentUser?.uid ?? "")
-                
-                refImage.getData(maxSize: 1 * 1024 * 1024){ (data, error) in
-                    if let error = error {
-                        
+    
+    override func viewWillAppear(_ animated: Bool) {
+                let refImageBackground = refStorage.child(self.currentUser?.uid ?? "")
+                refImageBackground.getData(maxSize: 1 * 1024 * 1024){ (data, error) in
+                    if error != nil {
+                        print("Image doesn't exist in storage")
                     }
                     else {
                         self.backgroundView.image = UIImage(data: data!)
                     }
                 }
-                
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -87,8 +81,6 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
     */
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        let db = Firestore.firestore()
-
         db.collection("numbers").addDocument(data: [
             "number": newNumberTextField.text ?? "nil"
         ]) { err in
@@ -96,7 +88,6 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
                 self.displayAlert("Error adding number")
             } else {
                 self.displayAlert("Number added")
-
             }
         }
     }
