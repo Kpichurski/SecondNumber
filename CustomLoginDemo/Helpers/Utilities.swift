@@ -36,6 +36,13 @@ class Utilities {
         button.tintColor = UIColor.white
     }
     
+        static func styleFilledButtonDisabled(_ button:UIButton) {
+        
+        // Filled rounded corner style
+            button.backgroundColor = UIColor.gray
+        button.layer.cornerRadius = 25.0
+        button.tintColor = UIColor.white
+    }
     static func styleFilledButtonLogout(_ button:UIButton) {
         
         // Filled rounded corner style
@@ -58,4 +65,10 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
-}
+    
+    static func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }}

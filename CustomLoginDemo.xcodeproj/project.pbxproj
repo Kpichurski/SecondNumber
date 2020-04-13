@@ -17,11 +17,14 @@
 		9016370E243D2398005578E9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016370D243D2398005578E9 /* SignUpViewController.swift */; };
 		90163710243D23BF005578E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016370F243D23BF005578E9 /* LoginViewController.swift */; };
 		90163712243D23D8005578E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90163711243D23D8005578E9 /* HomeViewController.swift */; };
+		907AE5AE2444A3E70092D910 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907AE5AD2444A3E70092D910 /* ForgotPasswordViewController.swift */; };
+		907AE5B02444C6C10092D910 /* VerificatePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907AE5AF2444C6C10092D910 /* VerificatePinViewController.swift */; };
 		908B1FB3243D2F74000E6356 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B1FB2243D2F74000E6356 /* Utilities.swift */; };
 		908B1FB6243D357F000E6356 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 908B1FB5243D357F000E6356 /* GoogleService-Info.plist */; };
 		90E281F5243D432100CA2E8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E281F4243D432100CA2E8E /* Constants.swift */; };
 		90E281FA243FCC3000CA2E8E /* AddNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E281F9243FCC3000CA2E8E /* AddNumberViewController.swift */; };
 		90E283D224424E1A00CA2E8E /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E283D124424E1A00CA2E8E /* ImageController.swift */; };
+		90EACA5324452D1E00657D64 /* SetNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EACA5224452D1E00657D64 /* SetNewPasswordViewController.swift */; };
 		943AED272442603F008F105F /* EditNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AED262442603E008F105F /* EditNumberViewController.swift */; };
 		949A4EA8243FD48400D17C9A /* ListOfNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */; };
 		94F6AA0A24434ECE0025A287 /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F6AA0924434ECE0025A287 /* NumberModel.swift */; };
@@ -41,12 +44,16 @@
 		9016370D243D2398005578E9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9016370F243D23BF005578E9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		90163711243D23D8005578E9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		907AE5AD2444A3E70092D910 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		907AE5AF2444C6C10092D910 /* VerificatePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificatePinViewController.swift; sourceTree = "<group>"; };
+		907AE5B124451BF10092D910 /* SendEmail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendEmail.h; sourceTree = "<group>"; };
 		908B1FB2243D2F74000E6356 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		908B1FB5243D357F000E6356 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90E281F4243D432100CA2E8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90E281F9243FCC3000CA2E8E /* AddNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNumberViewController.swift; sourceTree = "<group>"; };
 		90E283D02442068200CA2E8E /* CustomLoginDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomLoginDemo.entitlements; sourceTree = "<group>"; };
 		90E283D124424E1A00CA2E8E /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		90EACA5224452D1E00657D64 /* SetNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNewPasswordViewController.swift; sourceTree = "<group>"; };
 		943AED262442603E008F105F /* EditNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNumberViewController.swift; sourceTree = "<group>"; };
 		949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfNumbersViewController.swift; sourceTree = "<group>"; };
 		94F6AA0924434ECE0025A287 /* NumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
@@ -130,6 +137,9 @@
 				90E283D124424E1A00CA2E8E /* ImageController.swift */,
 				949A4EA7243FD48400D17C9A /* ListOfNumbersViewController.swift */,
 				943AED262442603E008F105F /* EditNumberViewController.swift */,
+				907AE5AD2444A3E70092D910 /* ForgotPasswordViewController.swift */,
+				907AE5AF2444C6C10092D910 /* VerificatePinViewController.swift */,
+				90EACA5224452D1E00657D64 /* SetNewPasswordViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -139,6 +149,7 @@
 			children = (
 				908B1FB2243D2F74000E6356 /* Utilities.swift */,
 				90E281F4243D432100CA2E8E /* Constants.swift */,
+				907AE5B124451BF10092D910 /* SendEmail.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -276,12 +287,15 @@
 			files = (
 				901636FE243D231F005578E9 /* ViewController.swift in Sources */,
 				901636FA243D231F005578E9 /* AppDelegate.swift in Sources */,
+				907AE5B02444C6C10092D910 /* VerificatePinViewController.swift in Sources */,
 				90E281FA243FCC3000CA2E8E /* AddNumberViewController.swift in Sources */,
 				908B1FB3243D2F74000E6356 /* Utilities.swift in Sources */,
 				9016370E243D2398005578E9 /* SignUpViewController.swift in Sources */,
 				949A4EA8243FD48400D17C9A /* ListOfNumbersViewController.swift in Sources */,
 				90E283D224424E1A00CA2E8E /* ImageController.swift in Sources */,
 				90163710243D23BF005578E9 /* LoginViewController.swift in Sources */,
+				90EACA5324452D1E00657D64 /* SetNewPasswordViewController.swift in Sources */,
+				907AE5AE2444A3E70092D910 /* ForgotPasswordViewController.swift in Sources */,
 				901636FC243D231F005578E9 /* SceneDelegate.swift in Sources */,
 				90163712243D23D8005578E9 /* HomeViewController.swift in Sources */,
 				90E281F5243D432100CA2E8E /* Constants.swift in Sources */,
@@ -434,6 +448,37 @@
 				CODE_SIGN_ENTITLEMENTS = CustomLoginDemo/CustomLoginDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64DBC383MU;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFunctions/FirebaseFunctions.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseStorage/FirebaseStorage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MHLoadingButton/MHLoadingButton.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil/absl.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCoreDiagnosticsInterop\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios/MailCore\"",
+				);
 				INFOPLIST_FILE = CustomLoginDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,6 +486,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CustomLoginDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/CustomLoginDemo/Helpers/SendEmail.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

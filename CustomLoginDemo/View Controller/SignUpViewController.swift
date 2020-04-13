@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let email = EmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                if let err = err {
+                if  err != nil {
                     // there was an error creating user
                     self.showError("Error creating user")
                 }

@@ -17,6 +17,7 @@ class EditNumberViewController: UIViewController {
     
     var db =  Firestore.firestore()
     var doneSaving: (()->())?
+    
     var numberToEditId: String?
     var numberToEditValue:String?
     override func viewDidLoad() {

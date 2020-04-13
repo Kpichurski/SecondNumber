@@ -27,8 +27,8 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     func load(){
         
         db.collection("numbers")
-            .whereField("IsActive", isEqualTo: true)
-            .whereField("IsOccupied", isEqualTo: false)
+//            .whereField("IsActive", isEqualTo: true)
+//            .whereField("IsOccupied", isEqualTo: false)
             .getDocuments() { (querySnapshot, err) in
              if let err = err {
                  print("Error getting documents: \(err)")
@@ -36,12 +36,16 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
                 self.numbersArrayId.removeAll()
                 self.numbersArrayValue.removeAll()
                  for document in querySnapshot!.documents {
-                    self.numbersArrayValue.append(document.data().first!.value as? String ?? "")
+                    self.numbersArrayValue.append(document.data().first!.value as? String ?? "error")
                     self.numbersArrayId.append(document.documentID)
                  }
+                print(self.numbersArrayValue)
+                         self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+               print()
              }
+        
+    
          }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +67,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         load()
+
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
