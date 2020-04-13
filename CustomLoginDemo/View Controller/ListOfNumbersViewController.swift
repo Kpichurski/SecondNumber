@@ -11,7 +11,8 @@ import Firebase
 
 
 class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+    
+    @IBOutlet weak var addButton: UIBarButtonItem!
     let cellId = "CheckNumberListItem"
     var numbersArrayId = [String]()
     var numbersArrayValue = [String]()
@@ -25,36 +26,47 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func load(){
-        
         db.collection("numbers")
             .whereField("IsActive", isEqualTo: true)
             .whereField("IsOccupied", isEqualTo: false)
+            .whereField("UserId", isEqualTo: Auth.auth().currentUser?.uid ?? "")
             .getDocuments() { (querySnapshot, err) in
-             if let err = err {
-                 print("Error getting documents: \(err)")
-             } else {
-                self.numbersArrayId.removeAll()
-                self.numbersArrayValue.removeAll()
-                 for document in querySnapshot!.documents {
-                    self.numbersArrayValue.append(document.data().first!.value as? String ?? "")
-                    self.numbersArrayId.append(document.documentID)
-                 }
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    self.numbersArrayId.removeAll()
+                    self.numbersArrayValue.removeAll()
+                    for document in querySnapshot!.documents {
+                        self.numbersArrayValue.append(document.get("Number") as! String)
+                        self.numbersArrayId.append(document.documentID)
+                    }
                 }
                 self.tableView.reloadData()
-             }
-         }
+        }
+    }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(self.numbersArrayId.count)
         return self.numbersArrayValue.count
         
     }
     
+    @IBAction func addTapped(_ sender: Any){
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "toEditNumber" {
             let editNumberPopUp = segue.destination as! EditNumberViewController
             editNumberPopUp.numberToEditId = self.numberToEditId
             editNumberPopUp.numberToEditValue = self.numberToEditValue
+            editNumberPopUp.doneSaving = {[weak self] in
+                self?.load()
+            }
+        }
+        
+        if segue.identifier == "toAddNumber" {
+            let editNumberPopUp = segue.destination as! EditNumberViewController
             editNumberPopUp.doneSaving = {[weak self] in
                 self?.load()
             }
@@ -65,12 +77,12 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
         load()
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = numbersArrayValue[indexPath.row]
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = UIContextualAction(style: .destructive, title: "Edit"){(action, view,
             actionPerformed: (Bool) -> () ) in
@@ -79,7 +91,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
             self.performSegue(withIdentifier: "toEditNumber", sender: nil)
             actionPerformed(true)
         }
-         edit.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        edit.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         return UISwipeActionsConfiguration(actions: [edit])
     }
     
@@ -95,8 +107,8 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
                 }
             }
         }
-            delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-            return UISwipeActionsConfiguration(actions: [delete])
+        delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        return UISwipeActionsConfiguration(actions: [delete])
     }
-
+    
 }

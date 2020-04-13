@@ -92,7 +92,8 @@ class AddNumberViewController: UIViewController, UITextFieldDelegate {
         db.collection("numbers").addDocument(data: [
             "Number": newNumberTextField.text ?? "nil",
             "IsActive": true,
-            "IsOccupied": false
+            "IsOccupied": false,
+            "UserId": ""
         ]) { err in
             if err != nil {
                 self.displayAlert("Error adding number")
