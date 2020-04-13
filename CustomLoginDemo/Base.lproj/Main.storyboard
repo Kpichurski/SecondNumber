@@ -241,7 +241,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Numbers" id="uYP-K5-b1S">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="jkL-Gt-Jm4"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Edit" id="jkL-Gt-Jm4">
+                                            <connections>
+                                                <action selector="editTapped:" destination="AKa-aL-sf2" id="bdR-xU-ghc"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m2D-5o-Pab">
                                             <connections>
                                                 <segue destination="Dhm-B5-67W" kind="show" identifier="toAddNumber" id="mPa-77-Alk"/>
@@ -263,6 +267,8 @@
                     <tabBarItem key="tabBarItem" title="List Of Numbers" id="HJO-oV-14H"/>
                     <connections>
                         <outlet property="addButton" destination="m2D-5o-Pab" id="CZn-17-FR8"/>
+                        <outlet property="editButton" destination="jkL-Gt-Jm4" id="61l-6Y-JTw"/>
+                        <outlet property="navigationButtons" destination="uYP-K5-b1S" id="q1Q-kD-mOt"/>
                         <outlet property="tableView" destination="IIJ-mN-Gv7" id="yRL-1o-Sva"/>
                         <segue destination="Dhm-B5-67W" kind="presentation" identifier="toEditNumber" id="G6s-wT-oNk"/>
                     </connections>
@@ -582,6 +588,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mPa-77-Alk"/>
+        <segue reference="G6s-wT-oNk"/>
     </inferredMetricsTieBreakers>
 </document>
