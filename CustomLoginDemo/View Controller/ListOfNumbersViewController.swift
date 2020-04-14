@@ -12,6 +12,7 @@ import Firebase
 
 class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     let cellId = "CheckNumberListItem"
     var numbersArrayId = [String]()
@@ -19,35 +20,61 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     var db =  Firestore.firestore()
     var numberToEditId:String?
     var numberToEditValue:String?
+    var currentUserId = Auth.auth().currentUser?.uid
+    @IBOutlet weak var navigationButtons: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        load()
     }
     
     func load(){
-        
+        db = Firestore.firestore()
         db.collection("numbers")
-//            .whereField("IsActive", isEqualTo: true)
-//            .whereField("IsOccupied", isEqualTo: false)
+            .whereField("IsActive", isEqualTo: true)
+            //.whereField("IsOccupied", isEqualTo: false)
+            .whereField("UserId", isEqualTo: self.currentUserId ?? "")
             .getDocuments() { (querySnapshot, err) in
-             if let err = err {
-                 print("Error getting documents: \(err)")
-             } else {
-                self.numbersArrayId.removeAll()
-                self.numbersArrayValue.removeAll()
-                 for document in querySnapshot!.documents {
-                    self.numbersArrayValue.append(document.data().first!.value as? String ?? "error")
-                    self.numbersArrayId.append(document.documentID)
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    self.numbersArrayId.removeAll()
+                    self.numbersArrayValue.removeAll()
+                    for document in querySnapshot!.documents {
+                        self.numbersArrayValue.append(document.get("Number") as! String)
+                        self.numbersArrayId.append(document.documentID)
+                    }
+                    self.tableView.reloadData()
+                    self.changeAddNavigationButtonState()
                  }
                 print(self.numbersArrayValue)
                          self.tableView.reloadData()
                 }
-               print()
-             }
-        
+                
+                
+        }
     
-         }
+    @IBAction func editTapped(_ sender: Any) {
+        if(tableView.isEditing == true)
+        {
+            tableView.isEditing = false
+            editButton.title = "Edit"
+        }
+        else {
+            tableView.isEditing = true
+            editButton.title = "Done"
+        }
+        
+    }
+    func changeAddNavigationButtonState(){
+        
+        if(numbersArrayValue.count > 2){
+            addButton.isEnabled = false
+        }
+        else {
+          addButton.isEnabled = true
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(self.numbersArrayId.count)
@@ -77,7 +104,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         load()
 
     }
@@ -97,6 +124,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
             actionPerformed(true)
         }
         edit.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        edit.image = UIImage(named: "edit.png")
         return UISwipeActionsConfiguration(actions: [edit])
     }
     
@@ -104,7 +132,8 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
         let delete = UIContextualAction(style: .normal, title: "Delete"){(action, view, nil ) in
             self.numbersArrayValue.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .right)
-            self.db.collection("numbers").document(self.numbersArrayId[indexPath.row]).delete { (err) in
+            self.changeAddNavigationButtonState()
+            self.db.collection("numbers").document(self.numbersArrayId[indexPath.row]).updateData(["UserId": ""]) { (err) in
                 if let err = err {
                     print("Error deleting document: \(err)")
                 } else {
@@ -112,6 +141,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
                 }
             }
         }
+        delete.image = UIImage(named: "delete.png")
         delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return UISwipeActionsConfiguration(actions: [delete])
     }
