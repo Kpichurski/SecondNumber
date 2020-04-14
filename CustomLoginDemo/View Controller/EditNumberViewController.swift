@@ -20,6 +20,7 @@ class EditNumberViewController: UIViewController {
     
     var db =  Firestore.firestore()
     var doneSaving: (()->())?
+    
     var numberToEditId: String?
     var numberToEditValue:String?
     var numbersArrayValue:[String] = []

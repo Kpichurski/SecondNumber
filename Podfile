@@ -13,4 +13,5 @@ target 'CustomLoginDemo' do
 	pod 'Firebase/Functions'
 	pod 'Firebase/Storage'
 	pod 'MHLoadingButton'
+	pod 'mailcore2-ios'
 end

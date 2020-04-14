@@ -13,10 +13,13 @@ class ImageController: UIViewController , UINavigationControllerDelegate, UIImag
 
     @IBOutlet weak var importImage: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    let currentUser = Auth.auth().currentUser
+    let dbStorageRef = Storage.storage().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dbStorage = Storage.storage()
-        let db = Firestore.firestore();
+        Utilities.styleFilledButton(importImage)
+        importImage.titleLabel?.text = "Import"
+        importImage.titleLabel?.textAlignment = .center
         // Do any additional setup after loading the view.
     }
     
@@ -46,29 +49,13 @@ class ImageController: UIViewController , UINavigationControllerDelegate, UIImag
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             imageView.image = image
             let upload = image.pngData()
-            let currentUser = Auth.auth().currentUser
-            let dbStorageRef = Storage.storage().reference().child(currentUser?.uid ?? "")
+            let imageStorage = dbStorageRef.child(currentUser?.uid ?? "")
             
-            dbStorageRef.putData(upload!, metadata: nil) { (metadata, error) in
+            imageStorage.putData(upload!, metadata: nil) { (metadata, error) in
                 if error != nil {
-                    print(error)
+                    print(error!)
                 }
-        
-                let db = Firestore.firestore();
-                dbStorageRef.downloadURL { (url, error) in
-                    if error != nil {
-                        print("Eror downloading url")
-                    }
-                    else {
-                        let collection = db.collection("config").document(currentUser?.uid ?? "").setData(["image": url?.absoluteString])
-                    }
-                }
-
             }
-            
-            
-            
-            
         }
         else {
             

@@ -13,6 +13,7 @@ import Firebase
 class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     let cellId = "CheckNumberListItem"
     var numbersArrayId = [String]()
@@ -47,6 +48,8 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
                     self.tableView.reloadData()
                     self.changeAddNavigationButtonState()
                  }
+                print(self.numbersArrayValue)
+                         self.tableView.reloadData()
                 }
                 
                 
@@ -114,6 +117,7 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidAppear(_ animated: Bool) {
         load()
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

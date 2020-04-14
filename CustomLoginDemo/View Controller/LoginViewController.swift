@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -36,6 +37,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(loginButton)
+        Utilities.styleFilledButton(forgotPasswordButton)
+        
     }
     /*
     // MARK: - Navigation
@@ -66,5 +69,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     func singIn(){
 
+    }
+    @IBAction func forgtoPasswordTapped(_ sender: Any) {
     }
 }
