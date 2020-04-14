@@ -13,6 +13,7 @@ import Firebase
 class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     let cellId = "CheckNumberListItem"
     var numbersArrayId = [String]()

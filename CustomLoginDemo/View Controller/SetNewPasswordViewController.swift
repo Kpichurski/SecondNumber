@@ -7,12 +7,24 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseAuth
 class SetNewPasswordViewController: UIViewController {
 
+
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var newPasswordTextField: UITextField!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    var email:String?
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(email!)
+        Utilities.styleTextField(confirmPasswordTextField)
+        Utilities.styleTextField(newPasswordTextField)
+        Utilities.styleFilledButton(submitButton)
         // Do any additional setup after loading the view.
     }
     
@@ -26,5 +38,50 @@ class SetNewPasswordViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func transitionToHome() {
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+    }
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        if  newPasswordTextField.text != confirmPasswordTextField.text
+        {
+            errorLabel.alpha = 1
+            errorLabel.text = "Passwor are not the same!"
+        }
+//        else if Utilities.isPasswordValid(newPasswordTextField.text ?? "") &&
+//            Utilities.isPasswordValid(confirmPasswordTextField.text ?? "") {
+//            print(newPasswordTextField.text)
+//            print(confirmPasswordTextField.text)
+//            errorLabel.alpha = 1
+//            errorLabel.text = "Password is too weak."
+//        }
+        else{
+            var newPassword = newPasswordTextField.text
+            db.collection("users").document(email!).getDocument { (data, error) in
+                if error != nil {
+                    
+                }
+                else {
+                    var pass = data?.get("password") as? String
+                    Auth.auth().signIn(withEmail: self.email!, password: pass!) { (result, error) in
+                        if error != nil {
+                            print("Error in sign in")
+                        }
+                        else {
+                            Auth.auth().currentUser?.updatePassword(to: newPassword!, completion: { (error) in
+                                if error != nil {
+                                    print("Error changing password")
+                                }
+                                else {
+                                    self.transitionToHome()
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+           
+        }
+    }
 }

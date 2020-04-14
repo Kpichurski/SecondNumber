@@ -21,6 +21,7 @@ class VerificatePinViewController: UIViewController, UITextFieldDelegate {
     var db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(email!)
         pinOneTextField.keyboardType = UIKeyboardType.numberPad
         pinTwoTextFIeld.keyboardType = UIKeyboardType.numberPad
         pinThreeTextField.keyboardType = UIKeyboardType.numberPad
@@ -77,6 +78,7 @@ class VerificatePinViewController: UIViewController, UITextFieldDelegate {
                     var pin = self.wholePin()
                     if data!.get("pin") as? String == pin
                     {
+                        //self.performSegue(withIdentifier: "passChange", sender: self)
                         self.transitionToHome()
                     }
                     else{
@@ -93,6 +95,14 @@ class VerificatePinViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         if (segue.identifier == "changePass")
+//               {
+//                let svc = segue.destination as! SetNewPasswordViewController
+//                svc.email = self.email
+//               }
+//        
+//    }
     func wholePin() -> String {
         return pinOneTextField.text! + pinTwoTextFIeld.text! + pinThreeTextField.text! + pinFourTextField.text!
     }
@@ -127,6 +137,7 @@ class VerificatePinViewController: UIViewController, UITextFieldDelegate {
     
         func transitionToHome() {
             let setNewPasswordViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.setNewPasswordViewController) as? SetNewPasswordViewController
+            setNewPasswordViewController?.email = self.email
         view.window?.rootViewController = setNewPasswordViewController
         view.window?.makeKeyAndVisible()
     }

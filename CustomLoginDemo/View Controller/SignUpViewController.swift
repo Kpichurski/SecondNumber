@@ -96,7 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.showError("Error creating user")
                 }
                 else {
-                    self.db.collection("users").addDocument(data: ["firstname": firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                    self.db.collection("users").document(email).setData(["firstname": firstName, "lastname":lastName, "uid":result!.user.uid, "password": password]) { (error) in
                         if error != nil {
                             self.showError("Error saving user data")
                         }

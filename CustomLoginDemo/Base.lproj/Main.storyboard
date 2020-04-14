@@ -138,13 +138,78 @@
                     <view key="view" contentMode="scaleToFill" id="RRs-0W-oD9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V41-Gv-aaG">
+                                <rect key="frame" x="40" y="128" width="334" height="330"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change my Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYV-h1-lDC" userLabel="Description Label Text Field">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="GFM-1j-svw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="714-Xh-xbN">
+                                        <rect key="frame" x="0.0" y="70" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Zfy-Og-rwg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="knd-Bn-Ili">
+                                        <rect key="frame" x="0.0" y="140" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Mrl-aI-28G"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-26-WGt">
+                                        <rect key="frame" x="0.0" y="210" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hJu-cA-uHq"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="7jv-Q2-9lS" eventType="touchUpInside" id="f44-jN-TnR"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJu-2f-2ua">
+                                        <rect key="frame" x="0.0" y="280" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="az9-PA-d58"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="V41-Gv-aaG" firstAttribute="centerX" secondItem="RRs-0W-oD9" secondAttribute="centerX" id="P1U-1M-tOh"/>
+                            <constraint firstItem="V41-Gv-aaG" firstAttribute="top" secondItem="4X2-dc-DJX" secondAttribute="top" constant="40" id="STr-wd-2GD"/>
+                            <constraint firstItem="V41-Gv-aaG" firstAttribute="leading" secondItem="4X2-dc-DJX" secondAttribute="leading" constant="40" id="tlk-he-O9d"/>
+                            <constraint firstItem="4X2-dc-DJX" firstAttribute="trailing" secondItem="V41-Gv-aaG" secondAttribute="trailing" constant="40" id="xU3-Av-fAy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4X2-dc-DJX"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Wb1-UP-VNQ"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="knd-Bn-Ili" id="kw1-bO-w7b"/>
+                        <outlet property="descriptionLabel" destination="NYV-h1-lDC" id="xmz-n5-QV8"/>
+                        <outlet property="errorLabel" destination="SJu-2f-2ua" id="5H6-oI-4XL"/>
+                        <outlet property="newPasswordTextField" destination="714-Xh-xbN" id="H2R-X1-6Sr"/>
+                        <outlet property="submitButton" destination="Ixc-26-WGt" id="yhO-it-bra"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugh-vF-7YT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-405" y="1992"/>
+            <point key="canvasLocation" x="1453.6231884057972" y="1794.6428571428571"/>
         </scene>
         <!--Verificate Pin View Controller-->
         <scene sceneID="WYr-ZK-Xwv">
@@ -230,6 +295,7 @@
                         <outlet property="pinOneTextField" destination="7mO-0U-l7J" id="q5L-q1-fOi"/>
                         <outlet property="pinThreeTextField" destination="gZI-yK-cdB" id="ICM-yK-Iu2"/>
                         <outlet property="pinTwoTextFIeld" destination="86g-Pk-oJd" id="yXZ-mb-sIT"/>
+                        <segue destination="7jv-Q2-9lS" kind="push" identifier="changePass" id="lAE-8y-pFr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLQ-V7-ncl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -415,7 +481,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Numbers" id="uYP-K5-b1S">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="jkL-Gt-Jm4"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Edit" id="jkL-Gt-Jm4">
+                                            <connections>
+                                                <action selector="editTapped:" destination="AKa-aL-sf2" id="sTG-aS-1qG"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m2D-5o-Pab">
                                             <connections>
                                                 <segue destination="Dhm-B5-67W" kind="show" identifier="toAddNumber" id="mPa-77-Alk"/>
@@ -437,6 +507,7 @@
                     <tabBarItem key="tabBarItem" title="List Of Numbers" id="HJO-oV-14H"/>
                     <connections>
                         <outlet property="addButton" destination="m2D-5o-Pab" id="CZn-17-FR8"/>
+                        <outlet property="editButton" destination="jkL-Gt-Jm4" id="2ZT-qk-I20"/>
                         <outlet property="tableView" destination="IIJ-mN-Gv7" id="yRL-1o-Sva"/>
                         <segue destination="Dhm-B5-67W" kind="presentation" identifier="toEditNumber" id="G6s-wT-oNk"/>
                     </connections>

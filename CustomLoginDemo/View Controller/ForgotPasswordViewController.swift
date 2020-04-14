@@ -55,7 +55,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate{
                {
                 let svc = segue.destination as! VerificatePinViewController
                 svc.email = emailTextField.text
-               }    }
+               }
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -123,8 +125,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate{
              }
          }
          let builder = MCOMessageBuilder()
-         builder.header.to = [MCOAddress(displayName: "SecurityCode", mailbox: email)]
-         builder.header.from = MCOAddress(displayName: "SecurityCode", mailbox: "pinsecondnumber@gmail.com")
+         builder.header.to = [MCOAddress(displayName: "Security Code", mailbox: email)]
+         builder.header.from = MCOAddress(displayName: "Security Code", mailbox: "pinsecondnumber@gmail.com")
          builder.header.subject = "PIN verification from SecondNumber"
          builder.htmlBody = "This is your PIN: <b>\(pin)</b>"
          
