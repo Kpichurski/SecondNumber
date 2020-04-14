@@ -51,16 +51,26 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
                 
                 
         }
-    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        //var numberToMove = numbersArrayValue[sourceIndexPath.row]
+        //numberToMove.insert(numberToMove, at: IndexPath.row)
+        //swap(&numbersArrayValue[sourceIndexPath.row], &numbersArrayValue[destinationIndexPath.row])
+        //tableView.reloadData()
+    }
     @IBAction func editTapped(_ sender: Any) {
         if(tableView.isEditing == true)
         {
             tableView.isEditing = false
             editButton.title = "Edit"
+            addButton.isEnabled = true
         }
         else {
             tableView.isEditing = true
             editButton.title = "Done"
+            addButton.isEnabled = false
         }
         
     }
@@ -109,6 +119,19 @@ class ListOfNumbersViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = numbersArrayValue[indexPath.row]
+        var imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "dot_green")
+        imageView.frame = CGRect(x:7,y:18,width:5,height:5)
+        cell.addSubview(imageView)
+//        cell.imageView?.image = #imageLiteral(resourceName: "dot_green")
+//
+//        cell.imageView?.frame = CGRect(x:5,y:5,width:5,height:5)
+//        cell.addSubview(<#T##view: UIView##UIView#>)
+//        cell.imageView?.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+//        UIViewAutoresizingFlexibleWidth;
+
+//        let highlightedImage = UIImage(named: "dot_red")
+//        cell.imageView?.highlightedImage = highlightedImage
         return cell
     }
     

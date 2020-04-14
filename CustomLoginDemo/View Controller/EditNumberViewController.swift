@@ -62,7 +62,7 @@ class EditNumberViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         
-        if numberToEditId != nil{
+        if numberToEditId != nil && randomId != nil{
             self.db.collection("numbers").document(self.numberToEditId!).updateData(["UserId": ""])
             { (err) in
                 if let err = err {
@@ -73,15 +73,18 @@ class EditNumberViewController: UIViewController {
                 }
             }
         }
-        self.db.collection("numbers").document(numbersArrayId[self.randomId!]).updateData(["UserId": Auth.auth().currentUser?.uid])
-        { (err) in
-            if let err = err {
-                print("Error updating document: \(err)")
-            }
-            else {
-                print("Document successfully updated")
+        if(self.randomId != nil){
+            self.db.collection("numbers").document(numbersArrayId[self.randomId!]).updateData(["UserId": Auth.auth().currentUser?.uid])
+            { (err) in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                }
+                else {
+                    print("Document successfully updated")
+                }
             }
         }
+       
         if let doneSaving = doneSaving{
             doneSaving()
         }
