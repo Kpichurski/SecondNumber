@@ -43,9 +43,22 @@ class SetNewPasswordViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
+    func setButtonOnLoading(){
+        self.submitButton.loadingIndicator(true)
+        self.submitButton.setTitle("", for: .normal)
+    }
+    func setButtonOffLoading(_ newPassword:String){
+        self.submitButton.loadingIndicator(false)
+        self.submitButton.setTitle(newPassword, for: .normal)
+    }
     @IBAction func submitButtonTapped(_ sender: Any) {
-        if  newPasswordTextField.text != confirmPasswordTextField.text
+        setButtonOnLoading();
+        if newPasswordTextField.text == nil ||
+            confirmPasswordTextField.text == nil &&
+            newPasswordTextField.text != confirmPasswordTextField.text
+            
         {
+            setButtonOffLoading("Submit")
             errorLabel.alpha = 1
             errorLabel.text = "Passwor are not the same!"
         }
@@ -57,20 +70,22 @@ class SetNewPasswordViewController: UIViewController {
 //            errorLabel.text = "Password is too weak."
 //        }
         else{
-            var newPassword = newPasswordTextField.text
+            let newPassword = newPasswordTextField.text
             db.collection("users").document(email!).getDocument { (data, error) in
                 if error != nil {
                     
                 }
                 else {
-                    var pass = data?.get("password") as? String
+                    let pass = data?.get("password") as? String
                     Auth.auth().signIn(withEmail: self.email!, password: pass!) { (result, error) in
                         if error != nil {
+                            self.setButtonOffLoading("Submit")
                             print("Error in sign in")
                         }
                         else {
                             Auth.auth().currentUser?.updatePassword(to: newPassword!, completion: { (error) in
                                 if error != nil {
+                                    self.setButtonOffLoading("Submit")
                                     print("Error changing password")
                                 }
                                 else {

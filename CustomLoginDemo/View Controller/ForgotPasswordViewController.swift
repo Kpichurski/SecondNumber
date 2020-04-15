@@ -67,8 +67,17 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate{
         // Pass the selected object to the new view controller.
     }
     */
-
-
+    func setButtonOnLoading(){
+        self.sendPinButton.loadingIndicator(true)
+        self.sendPinButton.setTitle("", for: .normal)
+    }
+    func setButtonOffLoading(_ pin:String){
+        self.sendPinButton.loadingIndicator(false)
+        self.sendPinButton.setTitle(pin, for: .normal)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+         self.setButtonOffLoading("Login")
+    }
     @IBAction func sendPinTapped(_ sender: Any) {
 
     }
@@ -76,10 +85,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate{
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "toSendEmail"
         {
+            setButtonOnLoading()
                 auth.fetchSignInMethods(forEmail: emailTextField.text!) { (data, error) in
                 if error != nil || data == nil{
                     self.errorLabel.alpha = 1
                     self.errorLabel.isHidden = false
+                    self.setButtonOffLoading("Send PIN")
                     self.errorLabel.text = "Email don't exist"
                 }
                 else{

@@ -49,20 +49,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func setButtonOnLoading(){
+        self.loginButton.loadingIndicator(true)
+        self.loginButton.setTitle("", for: .normal)
+    }
+    func setButtonOffLoading(_ login:String){
+        self.loginButton.loadingIndicator(false)
+        self.loginButton.setTitle(login, for: .normal)
+    }
     @IBAction func loginTapped(_ sender: Any) {
+        setButtonOnLoading()
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
+                self.setButtonOffLoading("Login")
             }
             else {
-
                 let initialViewController = self.storyboard?.instantiateViewController(identifier:"TabBarVC") as! UIViewController
                 self.view.window?.rootViewController = initialViewController
                 self.view.window?.makeKeyAndVisible()
+                
             }
         }
         //signIn()
